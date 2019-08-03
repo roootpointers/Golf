@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="@Project.Models.FingerPoint.Tag("/Content/css/bundle.min.css")">
     <link href="../../Content/AdminPage/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-   <link rel="stylesheet" href="~/Content/AdminPage/bower_components/select2/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="~/Content/AdminPage/bower_components/select2/dist/css/select2.min.css" />
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link href="~/Content/plugins/vue-popover/dist/vue-popper.min.css" rel="stylesheet" />
     <!-- jQuery 3 -->
     <script src="../../Content/js/modernizr-2.6.2.js"></script>
 
@@ -27,11 +28,16 @@
     <script src="@Project.Models.FingerPoint.Tag("/Content/ProjectFiles/Layout/layout.js")"></script>
     <!-- Select2 -->
     <script src="@Project.Models.FingerPoint.Tag("/Content/AdminPage/bower_components/select2/dist/js/select2.full.min.js")"></script>
+
+    <script type="text/javascript" src="~/Scripts/popper1.js"></script>
+    <!-- Vuejs -->
+    <script src="~/Content/vuejs/vue.js"></script>
+    <script src="~/Content/plugins/vue-popover/dist/vue-popper.min.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini modelpading" style="height:100% !important;">
-    <div id="preloader">
+    @*<div id="preloader">
         <div id="loader"></div>
-    </div>
+    </div>*@
     <!-- Site wrapper -->
     <div class="wrapper" id="MainBodyDivision">
         <header class="main-header">
@@ -110,6 +116,7 @@
     <script src="@Project.Models.FingerPoint.Tag("/Content/AdminPage/bower_components/select2/dist/js/select2.full.min.js")"></script>
     <!-- Images -->
     <script src="@Project.Models.FingerPoint.Tag("/Content/AdminPage/bower_components/Image/images.js")"></script>
+
 
     <script> 
         function OnkeyPressInputInt(evt) {

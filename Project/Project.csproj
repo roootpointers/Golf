@@ -6925,14 +6925,31 @@
     <Content Include="Content\js\jquery.mask.js" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\modernizr-2.6.2.js" />
+    <Content Include="Content\plugins\vue-popover\dist\vue-popper.css" />
+    <Content Include="Content\plugins\vue-popover\dist\vue-popper.js" />
+    <Content Include="Content\plugins\vue-popover\dist\vue-popper.min.css" />
+    <Content Include="Content\plugins\vue-popover\dist\vue-popper.min.js" />
     <Content Include="Content\ProjectFiles\Admin\Admins.js" />
     <Content Include="Content\ProjectFiles\Admin\CouponList.js" />
     <Content Include="Content\ProjectFiles\Layout\layout.js" />
+    <Content Include="Content\vuejs\vue.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -6949,7 +6966,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Autocomplete\prism\" />
     <Folder Include="Content\Images\Users\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AdminPage\bower_components\bootstrap-colorpicker\.bower.json" />
@@ -7582,12 +7598,26 @@
     <Content Include="Views\Admin\AdControl.cshtml" />
     <Content Include="Views\Admin\AdSettings.cshtml" />
     <Content Include="Views\Admin\CouponList.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\AdminPage\bower_components\moment\moment.d.ts" />
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908020105088_M5.resx">
