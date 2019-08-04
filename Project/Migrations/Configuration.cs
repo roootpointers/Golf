@@ -9,7 +9,7 @@ namespace Project.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Project.Models.Database.AdminContext context)

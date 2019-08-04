@@ -33,7 +33,10 @@ namespace Project
             config.Routes.MapHttpRoute("DefaultApiWithActionAndId",
                                         "api/{controller}/{action}/{id}",
                                         new { id = RouteParameter.Optional },
-                                        new { id = @"\d+(_\d+)?" }); 
+                                        new { id = @"\d+(_\d+)?" });
+
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
         }
     }
 }

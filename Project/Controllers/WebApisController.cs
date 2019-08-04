@@ -6,6 +6,7 @@ using System.Linq;
 using System;
 using System.Xml;
 using System.Web.Script.Serialization;
+using Project.Models.DataClasses;
 
 namespace Project.Controllers
 {
@@ -106,6 +107,32 @@ namespace Project.Controllers
             }
             catch (Exception) { }
             return temp;
+        }
+
+
+
+        /**
+         * Holes
+         */
+
+        public int AddHoleRecord(Holes hole)
+        {
+            if (!ModelState.IsValid)
+            {
+                return -1;
+            }
+            return HolesClass.AddHoleValue(hole);
+        }
+
+        public List<Holes> GetMatchDetails(int MatchId)
+        {
+            return HolesClass.GetMatchDetails(MatchId);
+        }
+
+        public Matches GetCommpleteMatch(int MatchId)
+        {
+            Matches match = HolesClass.GetCompleteMatch(MatchId);
+            return match;
         }
     }
 }

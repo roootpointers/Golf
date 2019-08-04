@@ -225,6 +225,7 @@
     <Compile Include="Models\Database\Tables.cs" />
     <Compile Include="Models\DataClasses\AdminsClass.cs" />
     <Compile Include="Models\DataClasses\CouponListClass.cs" />
+    <Compile Include="Models\DataClasses\HolesClass.cs" />
     <Compile Include="Models\DataClasses\SecurityClass.cs" />
     <Compile Include="Models\DataTables\DataTableColumn.cs" />
     <Compile Include="Models\DataTables\DataTableModelBinder.cs" />
@@ -232,6 +233,7 @@
     <Compile Include="Models\DataTables\DataTableRequest.cs" />
     <Compile Include="Models\DataTables\DataTableResponse.cs" />
     <Compile Include="Models\DataTables\DataTableSearch.cs" />
+    <Compile Include="Models\Enums\Enums.cs" />
     <Compile Include="Models\Others\AccountViewModels.cs" />
     <Compile Include="Models\Others\FingerPoint.cs" />
     <Compile Include="Models\Others\IdentityModels.cs" />
@@ -239,6 +241,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-Project-20180405100648.mdf" />
+    <Content Include="App_Data\aspnet-Project-20180405100648_log.ldf">
+      <DependentUpon>aspnet-Project-20180405100648.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\AdminPage\bg_login.jpg" />
     <Content Include="Content\AdminPage\bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Content\AdminPage\bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
@@ -6932,6 +6938,7 @@
     <Content Include="Content\ProjectFiles\Admin\Admins.js" />
     <Content Include="Content\ProjectFiles\Admin\CouponList.js" />
     <Content Include="Content\ProjectFiles\Layout\layout.js" />
+    <Content Include="Content\vuejs\axios\axios.min.js" />
     <Content Include="Content\vuejs\vue.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -6963,7 +6970,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\Autocomplete\prism\" />
     <Folder Include="Content\Images\Users\" />
   </ItemGroup>
