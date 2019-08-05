@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "Ad Settings";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="box box-default">
+                <div class="box-header">
+                    <div>
+                        <h1 class="box-title" style="font-weight:bold; color:red; font-size:24px; padding-bottom:5px;">ADMOB SETTINGS</h1>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="col-sm-12">
+                        <div class="box box-primary">
+                            <div class="box-header">
+                                <div>
+                                    <h1 class="box-title" style="font-weight:bold; color:deepskyblue; font-size:18px;">ADMOB APP UNITS</h1>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <form action="#/" id="Gameform" method="post" class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <label for="Name" class="col-sm-5 control-label">Android Admob app id: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="Android_Add_Mob_App_Id" name="Android_Add_Mob_App_Id">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Name" class="col-sm-5 control-label">Android Interstitial unit id 1: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="Android_Interstitial_Unit_Id_1" name="Android_Interstitial_Unit_Id_1">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Name" class="col-sm-5 control-label">Android Bottom banner unit id: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="Android_Bottom_banner_unit_Id" name="Android_Bottom_banner_unit_Id">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Name" class="col-sm-5 control-label">Android Reward unit id: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="Android_Reward_unit_Id" name="Android_Reward_unit_Id">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Name" class="col-sm-5 control-label">IOS Admob app id: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="Ios_Add_Mob_App_Id" name="Ios_Add_Mob_App_Id">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Name" class="col-sm-5 control-label">IOS Interstitial unit id 1: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="Ios_Interstitial_Unit_Id_1" name="Ios_Interstitial_Unit_Id_1">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Name" class="col-sm-5 control-label">IOS Bottom banner unit id: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="Ios_Bottom_banner_unit_Id" name="Ios_Bottom_banner_unit_Id">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Name" class="col-sm-5 control-label">IOS Reward unit id: </label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="Ios_Reward_unit_Id" name="Ios_Reward_unit_Id">
+                                        </div>
+                                    </div>
+                                    @Html.AntiForgeryToken()
+                                    <div class="form-group">
+                                        <div class="col-md-offset-9 col-md-3">
+                                            <button type="submit" id="BtnGame" class="btn btn-success">Save changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
+        document.getElementById("AdSettings").className = "active";
+        $("#preloader").show();
+        $.ajax({
+            type: "GET",
+            url: "/api/WebApis/GetAddSettings", //URI
+            dataType: "json",
+            success: function (data) {
+                debugger;
+                var datavalue = data;
+                var myJsonObject = datavalue;
+                contentType: "application/json";
+                try
+                {
+                    document.getElementById("Android_Add_Mob_App_Id").value = data.Data.Android_Add_Mob_App_Id;
+                    document.getElementById("Android_Interstitial_Unit_Id_1").value = data.Data.Android_Interstitial_Unit_Id_1;
+                    document.getElementById("Android_Bottom_banner_unit_Id").value = data.Data.Android_Bottom_banner_unit_Id;
+                    document.getElementById("Android_Reward_unit_Id").value = data.Data.Android_Reward_unit_Id;
+
+                    document.getElementById("Ios_Add_Mob_App_Id").value = data.Data.Ios_Add_Mob_App_Id;
+                    document.getElementById("Ios_Interstitial_Unit_Id_1").value = data.Data.Ios_Interstitial_Unit_Id_1;
+                    document.getElementById("Ios_Bottom_banner_unit_Id").value = data.Data.Ios_Bottom_banner_unit_Id;
+                    document.getElementById("Ios_Reward_unit_Id").value = data.Data.Ios_Reward_unit_Id;
+                }
+                catch (err) {
+                    bootbox.alert("There was no record found please add a record first. If the problem continues consult with your developer");
+                }
+                $("#preloader").hide();
+            },
+            error: function (xhr) {
+                $("#preloader").hide();
+                bootbox.alert('Internel Error...');
+            }
+        });
+    });
+</script>
+
