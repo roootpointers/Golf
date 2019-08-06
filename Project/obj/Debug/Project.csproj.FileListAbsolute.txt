@@ -333,13 +333,10 @@ C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AI.Web.xml
-C:\Users\aa\Desktop\Golf\Project\obj\Debug\Project.csprojAssemblyReference.cache
 C:\Users\aa\Desktop\Golf\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
 C:\Users\aa\Desktop\Golf\Project\obj\Debug\Project.csproj.CopyComplete
 C:\Users\aa\Desktop\Golf\Project\obj\Debug\Project.dll
 C:\Users\aa\Desktop\Golf\Project\obj\Debug\Project.pdb
-C:\Users\aa\Desktop\Golf\Project\obj\Debug\Project.Migrations.M5.resources
-C:\Users\aa\Desktop\Golf\Project\obj\Debug\Project.csproj.GenerateResource.cache
 D:\OfficeWork\Subhani\Golf\Project\bin\ApplicationInsights.config
 D:\OfficeWork\Subhani\Golf\Project\bin\Project.dll.config
 D:\OfficeWork\Subhani\Golf\Project\bin\Project.dll
@@ -425,3 +422,4 @@ D:\OfficeWork\Subhani\Golf\Project\obj\Debug\Project.csproj.CoreCompileInputs.ca
 D:\OfficeWork\Subhani\Golf\Project\obj\Debug\Project.csproj.CopyComplete
 D:\OfficeWork\Subhani\Golf\Project\obj\Debug\Project.dll
 D:\OfficeWork\Subhani\Golf\Project\obj\Debug\Project.pdb
+C:\Users\aa\Desktop\Golf\Project\obj\Debug\Project.csprojAssemblyReference.cache

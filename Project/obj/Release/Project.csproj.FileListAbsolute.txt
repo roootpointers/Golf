@@ -173,3 +173,46 @@ C:\Users\jawad\Desktop\Android Apis\Project\obj\Release\Project.csproj.CopyCompl
 C:\Users\jawad\Desktop\Android Apis\Project\obj\Release\Project.Migrations.M71.resources
 C:\Users\jawad\Desktop\Android Apis\Project\obj\Release\Project.Migrations.M9.resources
 C:\Users\jawad\Desktop\Android Apis\Project\obj\Release\Project.Migrations.M10.resources
+C:\Users\aa\Desktop\Golf\Project\bin\ApplicationInsights.config
+C:\Users\aa\Desktop\Golf\Project\bin\Project.dll.config
+C:\Users\aa\Desktop\Golf\Project\bin\Project.dll
+C:\Users\aa\Desktop\Golf\Project\bin\Project.pdb
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\aa\Desktop\Golf\Project\bin\PagedList.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Net.Http.Formatting.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.Http.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.Http.Cors.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.Http.WebHost.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.Helpers.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.Mvc.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.Optimization.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.Razor.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.WebPages.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.WebPages.Deployment.xml
+C:\Users\aa\Desktop\Golf\Project\bin\System.Web.WebPages.Razor.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Antlr3.Runtime.pdb
+C:\Users\aa\Desktop\Golf\Project\bin\Newtonsoft.Json.xml
+C:\Users\aa\Desktop\Golf\Project\bin\EntityFramework.xml
+C:\Users\aa\Desktop\Golf\Project\bin\EntityFramework.SqlServer.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.Owin.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.Owin.Security.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.ApplicationInsights.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\aa\Desktop\Golf\Project\bin\Microsoft.AI.Web.xml
+C:\Users\aa\Desktop\Golf\Project\obj\Release\Project.csprojAssemblyReference.cache
+C:\Users\aa\Desktop\Golf\Project\obj\Release\Project.csproj.CoreCompileInputs.cache
+C:\Users\aa\Desktop\Golf\Project\obj\Release\Project.csproj.CopyComplete
+C:\Users\aa\Desktop\Golf\Project\obj\Release\Project.dll
+C:\Users\aa\Desktop\Golf\Project\obj\Release\Project.pdb

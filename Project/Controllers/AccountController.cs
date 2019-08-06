@@ -75,7 +75,7 @@ namespace Project.Controllers
 
                 if (user != null)
                 {
-                    string roles = "Admins,CouponList,AdControl,AdSettings";
+                    string roles = "Admins,Scoreboard";
                     DateTime cookieIssuedDate = DateTime.Now;
 
                     var ticket = new FormsAuthenticationTicket(0,
@@ -96,7 +96,7 @@ namespace Project.Controllers
 
                     System.Web.HttpContext.Current.Response.Cookies.Add(formsAuthenticationTicketCookie);
                     FormsAuthentication.SetAuthCookie(model.Email, false);
-                    return RedirectToAction("CouponList", "Admin");
+                    return RedirectToAction("Scoreboard", "Admin");
                 }
                 else
                 {
@@ -119,7 +119,7 @@ namespace Project.Controllers
             oldCookie.Expires = DateTime.Now.AddDays(-3);
             Response.Cookies.Add(oldCookie);
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("CouponList", "Admin");
+            return RedirectToAction("Scoreboard", "Admin");
         }
      
         protected override void Dispose(bool disposing)

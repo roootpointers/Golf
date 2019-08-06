@@ -4,10 +4,7 @@ namespace Project.Models.Database
 {
     public class AdminContext : DbContext
     {
-        public DbSet<Admins> Admins { get; set; } 
-        public DbSet<AddControls> AddControls { get; set; } 
-        public DbSet<AddSettings> AddSettings { get; set; }
-        public DbSet<CouponLists> CouponLists { get; set; } 
+        public DbSet<Admins> Admins { get; set; }  
         public DbSet<Matches> Matches { get; set; }
         public DbSet<Golfers> Golfers { get; set; }
         public DbSet<MatchesGolfers> MatchesGolfers { get; set; }

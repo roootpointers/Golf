@@ -5,7 +5,6 @@
         url: "/api/WebApis/GetCurrentUserInfo", //URI
         dataType: "json",
         success: function (data) {
-            debugger;
             var datavalue = data;
             var myJsonObject = datavalue;
             contentType: "application/json";

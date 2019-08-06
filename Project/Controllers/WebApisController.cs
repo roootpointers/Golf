@@ -47,70 +47,7 @@ namespace Project.Controllers
         ////////////////////////////////////   
 
         ////////////////////////////////////
-        //////////////////////////////////// 
-        /// <summary>
-        ///     //Coupon -> Apis
-        public DataTableResponse GetCouponTable(DataTableRequest request, string data)
-        {
-            return Models.DataClasses.CouponListClass.Table(request,data);
-        }
-        [AllowAnonymous]
-        public int PostCoupon(CouponLists temp)
-        {
-            return Models.DataClasses.CouponListClass.AddRecord(temp);
-        }
-        public string UpdateCoupon(CouponLists temp)
-        {
-            return Models.DataClasses.CouponListClass.UpdateRecord(temp);
-        }
-        public CouponLists GetSingleCouponById(int Id)
-        {
-            return Models.DataClasses.CouponListClass.GetRecord(Id);
-        } 
-        public int DeleteCoupon(int Id)
-        {
-            return Models.DataClasses.CouponListClass.DeleteRecord(Id);
-        }
-
-        ///////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////
-        /// </summary>
-        /// <returns></returns>
-
-        //AddControl -> Apis
-        [AllowAnonymous]
-        public ApiClass GetAddControl()
-        {
-            ApiClass temp = new ApiClass();
-            AdminContext db = new AdminContext();
-            try
-            {
-                temp.Status = true;
-                temp.Message = "Ad Controls";
-                temp.Data = db.AddControls.FirstOrDefault();
-            }
-            catch (Exception) { }
-            return temp;
-        }
-
-        //AddSettings -> Apis
-        [AllowAnonymous]
-        public ApiClass GetAddSettings()
-        {
-            ApiClass temp = new ApiClass();
-            AdminContext db = new AdminContext();
-            try
-            {
-                temp.Status = true;
-                temp.Message = "Ad Settings";
-                temp.Data = db.AddSettings.FirstOrDefault();
-            }
-            catch (Exception) { }
-            return temp;
-        }
-
-
-
+        ////////////////////////////////////   
         /**
          * Holes
          */

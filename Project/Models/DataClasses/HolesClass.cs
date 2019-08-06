@@ -50,7 +50,7 @@ namespace Project.Models.DataClasses
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return holes;
@@ -77,7 +77,7 @@ namespace Project.Models.DataClasses
 
                 return match;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return null;
@@ -95,7 +95,7 @@ namespace Project.Models.DataClasses
                 //return golfers.ToList<Holes>();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return holes;

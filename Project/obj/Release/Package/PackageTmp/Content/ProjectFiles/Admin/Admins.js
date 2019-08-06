@@ -18,10 +18,10 @@ $(document).ready(function () {
 function Add() {
     $("#preloader").show();
     document.getElementById("BtnAdmin").disabled = true;
-    if ($("#Name").val() != null) { 
+    if ($("#Name").val() !== null) { 
         var Admin = {
             Occupation: "Admin", FullName: $("#Name").val(),
-            UserName: $("#UserName1").val(), Password: $("#Password1").val()
+            Email: $("#UserName1").val(), Password: $("#Password1").val()
         };
         var AdminData = JSON.stringify(Admin);
         // Make Ajax request with the contentType = false, and procesDate = false
@@ -33,7 +33,7 @@ function Add() {
             dataType: "json",
             data: AdminData,
             success: function (data, textStatus, xhr) {
-                if (data == 0) {
+                if (data === 0) {
                     $("#preloader").hide();
                     document.getElementById("BtnAdmin").disabled = false;
                     bootbox.alert('UserName Already exists');
@@ -45,7 +45,7 @@ function Add() {
                     var files = $("#AdminImage").get(0).files;
                     Imageform.append("Picture", files[0]);
                     // Add the uploaded image content to the form data collection
-                    if (files[0] != null) {
+                    if (files[0] !== null) {
                         var ajaxRequest = $.ajax({
                             type: "POST",
                             url: "/api/WebApis/PostImagesAdmin",
@@ -89,14 +89,13 @@ function Edit(id) {
         type: "GET",
         url: "/api/WebApis/GetSingleAdminById?Id=" + id + "", //URI
         dataType: "json",
-        success: function (data) {
-            debugger;
+        success: function (data) { 
             var datavalue = data;
             var myJsonObject = datavalue;
             contentType: "application/json";
             document.getElementById("AdminId").value = data.ID;
             document.getElementById("NameUpdate").value = data.FullName;
-            document.getElementById("UserNameUpdate").value = data.UserName;
+            document.getElementById("UserNameUpdate").value = data.Email;
             document.getElementById("PasswordUpdate").value = data.Password;  
             $("#preloader").hide();
         },
@@ -105,6 +104,16 @@ function Edit(id) {
             bootbox.alert('Internel Error...');
         }
     });
+}
+
+//Open Coins Model
+function Coins() {
+    $("#CoinsModel").modal(); 
+}
+
+//Add Coins
+function AddCoins() {
+    $("#CoinsModel").modal();
 }
 
 //Delete Record
@@ -129,7 +138,7 @@ function Delete(Id) {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (data, textStatus, xhr) {
-                        if (data == 0) {
+                        if (data === 0) {
                             $("#preloader").hide();
                             bootbox.alert('Try Again! Later...');
                         }
@@ -149,23 +158,22 @@ function Delete(Id) {
 }
 
 //Form For Update Record
-function Update() {
-    debugger;
+function Update() { 
     $("#preloader").show();
     document.getElementById("BtnAdminUpdate").disabled = true;
-    if ($("#NameUpdate").val() != null) { 
+    if ($("#NameUpdate").val() !== null) { 
         var Admin;
         try {
             Admin = {
                 ID: $("#AdminId").val(),
                 Occupation: "Admin", FullName: $("#NameUpdate").val(),
-                UserName: $("#UserNameUpdate").val(), Password: $("#PasswordUpdate").val()
+                Email: $("#UserNameUpdate").val(), Password: $("#PasswordUpdate").val()
             };
         } catch (error) {
             Admin = {
                 ID: $("#AdminId").val(),
                 Occupation: "Admin", FullName: $("#NameUpdate").val(),
-                UserName: $("#UserNameUpdate").val(), Password: $("#PasswordUpdate").val(), 
+                Email: $("#UserNameUpdate").val(), Password: $("#PasswordUpdate").val()
             };
         }
         var CarreerData = JSON.stringify(Admin);
@@ -178,7 +186,7 @@ function Update() {
             dataType: "json",
             data: CarreerData,
             success: function (data, textStatus, xhr) {
-                if (data == 0) {
+                if (data === 0) {
                     $("#preloader").hide();
                     document.getElementById("BtnAdminUpdate").disabled = false;
                     bootbox.alert('UserName Already exists');
@@ -189,7 +197,7 @@ function Update() {
                     var files = $("#ImageUpdate").get(0).files;
                     Imageform.append("Picture", files[0]);
                     // Add the uploaded image content to the form data collection
-                    if (files[0] != null) {
+                    if (files[0] !== null) {
                         var ajaxRequest = $.ajax({
                             type: "POST",
                             url: "/api/WebApis/PostImagesAdmin",
