@@ -13,10 +13,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/05/2019 01:08:51</publishTime>
     </File>
     <File Include="App_Data/aspnet-Project-20180405100648.mdf">
-      <publishTime>08/06/2019 17:57:25</publishTime>
+      <publishTime>08/07/2019 06:22:44</publishTime>
     </File>
     <File Include="App_Data/aspnet-Project-20180405100648_log.ldf">
-      <publishTime>08/06/2019 17:57:25</publishTime>
+      <publishTime>08/07/2019 06:22:44</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>08/05/2019 01:08:51</publishTime>
@@ -112,13 +112,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/05/2019 01:08:51</publishTime>
     </File>
     <File Include="bin/Project.dll">
-      <publishTime>08/06/2019 18:06:45</publishTime>
+      <publishTime>08/07/2019 06:22:41</publishTime>
     </File>
     <File Include="bin/Project.dll.config">
-      <publishTime>08/06/2019 17:57:10</publishTime>
+      <publishTime>08/07/2019 05:35:06</publishTime>
     </File>
     <File Include="bin/Project.pdb">
-      <publishTime>08/06/2019 18:06:45</publishTime>
+      <publishTime>08/07/2019 06:22:41</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>08/05/2019 01:08:51</publishTime>
@@ -22735,7 +22735,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2018 21:46:23</publishTime>
     </File>
     <File Include="Views/Admin/Scoreboard.cshtml">
-      <publishTime>08/06/2019 17:13:41</publishTime>
+      <publishTime>08/07/2019 06:22:06</publishTime>
     </File>
     <File Include="Views/Admin/Services.cshtml">
       <publishTime>04/08/2018 03:25:23</publishTime>
@@ -22810,7 +22810,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2019 13:16:54</publishTime>
     </File>
     <File Include="Views/Shared/_adminLayout.cshtml">
-      <publishTime>08/05/2019 01:08:51</publishTime>
+      <publishTime>08/07/2019 04:30:49</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>06/15/2018 12:19:51</publishTime>
@@ -22822,7 +22822,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/05/2019 01:08:51</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/06/2019 18:03:58</publishTime>
+      <publishTime>08/07/2019 06:22:55</publishTime>
     </File>
   </ItemGroup>
 </Project>
