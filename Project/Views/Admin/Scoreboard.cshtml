@@ -684,7 +684,6 @@
                             for (var x = 0; x < this.golfers.length; x++) {
                                 //console.log(this.golfers);
                                 var golfer = this.golfers[x];
-                                console.log(golfer);
                                 golfer.firstHalf.forEach((g) => {
                                     g.dots = 0;
                                 });
@@ -799,12 +798,15 @@
                                                 if (golfer.Holes.length > 0) {
                                                     golfer.firstHalf = this.splitData(golfer.Holes[0], 1);
                                                     golfer.secondHalf = this.splitData(golfer.Holes[0], 2);
+                                                    //console.log('data received', golfer.firstHalf.length, golfer.secondHalf.length);
 
                                                     for (var x = 0; x < golfer.firstHalf.length; x++) {
-                                                        golfer[x].Won = 0;
+                                                        golfer.firstHalf[x].Won = 0;
+                                                        golfer.secondHalf[x].dots = 0;
                                                     }
                                                     for (var x = 0; x < golfer.secondHalf.length; x++) {
-                                                        golfer[x].Won = 0;
+                                                        golfer.firstHalf[x].Won = 0;
+                                                        golfer.secondHalf[x].dots = 0;
                                                     }
                                                     //golfer.firstHalf.forEach((item) => {
                                                     //    item.Won = 0;
