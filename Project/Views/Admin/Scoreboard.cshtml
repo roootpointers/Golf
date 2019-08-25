@@ -336,7 +336,7 @@
                                                     <div class="score-board-box box-width">
                                                         <span class="box-text">{{par.secondHalfSum}}</span>
                                                     </div>
-                                                    <div class="score-board-box text-blue">Match Up</div>
+                                                    <div class="score-board-box text-blue">Match</div>
                                                 </div>
                                                 @*/////////////////////////
                                                         Golfer 1
@@ -684,7 +684,6 @@
                             for (var x = 0; x < this.golfers.length; x++) {
                                 //console.log(this.golfers);
                                 var golfer = this.golfers[x];
-                                console.log(golfer);
                                 golfer.firstHalf.forEach((g) => {
                                     g.dots = 0;
                                 });
@@ -776,7 +775,9 @@
                                                 this.par.secondHalf = this.splitData(parData[0], 2);
                                             }
                                         }
-                                    } 
+                                    }
+
+                                    //console.log(this.decendingIndexes(this.handicap.firstHalf));
                                 }
                             ).catch(
                                 error => {
@@ -790,21 +791,30 @@
                                         if (res.data != null) {
                                             var data = res.data;
                                             this.MatchId = data.ID;
-                                            this.CourseSlop = data.CourseSlop; 
+                                            this.CourseSlop = data.CourseSlop;
                                             for (var i = 0; i < data.Golfers.length; i++) {
-                                                var golfer = data.Golfers[i]; 
+                                                var golfer = data.Golfers[i];
                                                 golfer.isChanged = false;
                                                 if (golfer.Holes.length > 0) {
                                                     golfer.firstHalf = this.splitData(golfer.Holes[0], 1);
-                                                    golfer.secondHalf = this.splitData(golfer.Holes[0], 2);   
-                                                     
-                                                    for (var x = 0; x < golfer.firstHalf.length; x++) { 
-                                                        golfer.firstHalf[x].Won = 0; 
+                                                    golfer.secondHalf = this.splitData(golfer.Holes[0], 2);
+                                                    //console.log('data received', golfer.firstHalf.length, golfer.secondHalf.length);
+
+                                                    for (var x = 0; x < golfer.firstHalf.length; x++) {
+                                                        golfer.firstHalf[x].Won = 0;
+                                                        golfer.secondHalf[x].dots = 0;
                                                     }
                                                     for (var x = 0; x < golfer.secondHalf.length; x++) {
-                                                        golfer.secondHalf[x].Won = 0;
-                                                    } 
-                                                } else { 
+                                                        golfer.firstHalf[x].Won = 0;
+                                                        golfer.secondHalf[x].dots = 0;
+                                                    }
+                                                    //golfer.firstHalf.forEach((item) => {
+                                                    //    item.Won = 0;
+                                                    //});
+                                                    //golfer.secondHalf.forEach((item) => {
+                                                    //    item.Won = 0;
+                                                    //});
+                                                } else {
                                                     golfer.firstHalf = JSON.parse(JSON.stringify(this.golferDummyData));
                                                     golfer.secondHalf = JSON.parse(JSON.stringify(this.golferDummyData));
                                                 }
@@ -820,7 +830,6 @@
                                     }
                             ).catch(
                                 error => {
-                                    alert(error);
                                     console.log(error);
                                 }
                             )
