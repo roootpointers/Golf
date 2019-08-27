@@ -24,11 +24,13 @@ namespace Project.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admins")]
         public ActionResult CreateBoard()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admins")]
         public ActionResult CreateMatch()
         {
             return View();

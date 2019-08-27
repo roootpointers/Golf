@@ -7,6 +7,10 @@ using System;
 using System.Xml;
 using System.Web.Script.Serialization;
 using Project.Models.DataClasses;
+using System.Web;
+using System.Web.Security;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Project.Controllers
 {
@@ -45,6 +49,39 @@ namespace Project.Controllers
         }
         ////////////////////////////////////
         ////////////////////////////////////   
+        ///
+
+        public Golfers GetLoggedInUser()
+        {
+            CookieHeaderValue authCookie = Request.Headers.GetCookies().FirstOrDefault();
+            CookieState cookie = authCookie.Cookies.Where(o => o.Name.Equals("AdminEatSleepUser1234hytusksdbsdfasdjasdidasdijnasd")).FirstOrDefault();
+
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookie.Value);
+
+            string cookiePath = ticket.CookiePath;
+            DateTime expiration = ticket.Expiration;
+            bool expired = ticket.Expired;
+            bool isPersistent = ticket.IsPersistent;
+            DateTime issueDate = ticket.IssueDate;
+            string CookieId = ticket.Name;
+            string userData = ticket.UserData;
+            int version = ticket.Version;
+
+            string []userDataArr = userData.Split(',');
+            if (userDataArr.Length > 1)
+            {
+                try
+                {
+                    int userId = int.Parse(userDataArr[1]);
+                    return GolferClass.GetGolfer(userId);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+            return null;
+        }
 
         ////////////////////////////////////
         ////////////////////////////////////   

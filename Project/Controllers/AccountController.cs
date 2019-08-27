@@ -7,6 +7,7 @@ using Microsoft.Owin.Security;
 using Project.Models;
 using System.Web.Security;
 using Project.Models.Database;
+using Project.Models.DataClasses;
 
 namespace Project.Controllers
 {
@@ -71,38 +72,81 @@ namespace Project.Controllers
             }
             try
             {
-                Admins user = Models.DataClasses.SecurityClass.GetLoginStatus(model);
-
-                if (user != null)
+                if (model.LoginType == 2)
                 {
-                    string roles = "Admins,Scoreboard";
-                    DateTime cookieIssuedDate = DateTime.Now;
+                    Admins user = Models.DataClasses.SecurityClass.GetLoginStatus(model);
 
-                    var ticket = new FormsAuthenticationTicket(0,
-                        user.ID.ToString(),
-                        cookieIssuedDate,
-                        DateTime.Now.AddMinutes(2880),
-                        false,
-                        roles);
-
-                    string encryptedCookieContent = FormsAuthentication.Encrypt(ticket);
-                    var formsAuthenticationTicketCookie = new HttpCookie("AdminEatSleepUser1234hytusksdbsdfasdjasdidasdijnasd", encryptedCookieContent)
+                    if (user != null)
                     {
-                        Domain = FormsAuthentication.CookieDomain,
-                        Path = FormsAuthentication.FormsCookiePath,
-                        HttpOnly = true,
-                        Secure = FormsAuthentication.RequireSSL
-                    };
+                        string roles = "Admins,Scoreboard";
+                        DateTime cookieIssuedDate = DateTime.Now;
 
-                    System.Web.HttpContext.Current.Response.Cookies.Add(formsAuthenticationTicketCookie);
-                    FormsAuthentication.SetAuthCookie(model.Email, false);
-                    return RedirectToAction("Scoreboard", "Admin");
+                        var ticket = new FormsAuthenticationTicket(0,
+                            user.ID.ToString(),
+                            cookieIssuedDate,
+                            DateTime.Now.AddMinutes(2880),
+                            false,
+                            roles);
+
+                        string encryptedCookieContent = FormsAuthentication.Encrypt(ticket);
+                        var formsAuthenticationTicketCookie = new HttpCookie("AdminEatSleepUser1234hytusksdbsdfasdjasdidasdijnasd", encryptedCookieContent)
+                        {
+                            Domain = FormsAuthentication.CookieDomain,
+                            Path = FormsAuthentication.FormsCookiePath,
+                            HttpOnly = true,
+                            Secure = FormsAuthentication.RequireSSL
+                        };
+
+                        System.Web.HttpContext.Current.Response.Cookies.Add(formsAuthenticationTicketCookie);
+                        FormsAuthentication.SetAuthCookie(model.Email, false);
+                        return RedirectToAction("Scoreboard", "Admin");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Username or password is Incorrect!";
+                        return RedirectToAction("Login", "Account");
+                    }
+                }
+                else if (model.LoginType == 1)
+                {
+                    Golfers golfer = SecurityClass.GetGolferLoginStatus(model);
+                    if (golfer != null)
+                    {
+                        string roles = "Scoreboard," + golfer.ID;
+                        DateTime cookieIssuedDate = DateTime.Now;
+
+                        var ticket = new FormsAuthenticationTicket(0,
+                            golfer.ID.ToString(),
+                            cookieIssuedDate,
+                            DateTime.Now.AddMinutes(2880),
+                            false,
+                            roles);
+
+                        string encryptedCookieContent = FormsAuthentication.Encrypt(ticket);
+                        var formsAuthenticationTicketCookie = new HttpCookie("AdminEatSleepUser1234hytusksdbsdfasdjasdidasdijnasd", encryptedCookieContent)
+                        {
+                            Domain = FormsAuthentication.CookieDomain,
+                            Path = FormsAuthentication.FormsCookiePath,
+                            HttpOnly = true,
+                            Secure = FormsAuthentication.RequireSSL
+                        };
+
+                        System.Web.HttpContext.Current.Response.Cookies.Add(formsAuthenticationTicketCookie);
+                        FormsAuthentication.SetAuthCookie(model.Email, false);
+                        return RedirectToAction("Scoreboard", "Admin");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Invalid Login Type!";
+                        return RedirectToAction("Login", "Account");
+                    }
                 }
                 else
                 {
-                    TempData["Error"] = "Username or password is Incorrect!";
+                    TempData["Error"] = "Invalid Login Type!";
                     return RedirectToAction("Login", "Account");
                 }
+                
             }
             catch (Exception)
             {

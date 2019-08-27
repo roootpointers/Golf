@@ -22,5 +22,19 @@ namespace Project.Models.DataClasses
             }
             return temp;
         } 
+
+        public static Golfers GetGolferLoginStatus(LoginViewModel lv)
+        {
+            AdminContext db = new AdminContext();
+            Golfers temp = null;
+            try
+            {
+                temp = db.Golfers.FirstOrDefault(x => x.Email.Equals(lv.Email) && x.Password.Equals(lv.Password));
+            }
+            catch (Exception ex)
+            {
+            }
+            return temp;
+        }
     }
 }
