@@ -336,7 +336,7 @@
                                                     <div class="score-board-box box-width">
                                                         <span class="box-text">{{par.secondHalfSum}}</span>
                                                     </div>
-                                                    <div class="score-board-box text-blue">Match Up</div>
+                                                    <div class="score-board-box text-blue">Match</div>
                                                 </div>
                                                 @*/////////////////////////
                                                         Golfer 1
@@ -379,7 +379,7 @@
                                                     <div class="score-board-box box-width">
                                                         <span class="box-text">{{sumArray(golfer.firstHalf) + sumArray(golfer.secondHalf)}}</span>
                                                     </div>
-                                                    <div class="score-board-box">{{calculateTotalWon(golfer)}}</div>
+                                                    <div class="score-board-box">{{CalculatedUp(golfer)}} UP</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -389,20 +389,26 @@
                                                     <h4>{{golfer.Name}}</h4>
                                                     <div class="form-group">
                                                         <label>Player Index</label>
-                                                        <input class="form-control" v-on:change="GolferUpdated()" type="number" step="any" name="playerIndex1" v-model="golfer.PlayerIndex" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Tee Boxes</label>
-                                                        <input class="form-control" type="text" name="teeBoxes1" v-model="golfer.TeeBoxes" />
+                                                        <input class="form-control" disabled type="number" step="any" name="playerIndex1" v-model="golfer.PlayerIndex" />
                                                     </div>
                                                     <div class="">
                                                         <label>Course Handicap for {{golfer.Name}}: </label> {{golfer.CourseHandicap}}
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 col-lg-offset-2">
-                                                    <div class="form-group" style="margin-top:70px;">
-                                                        <label style="font-size:18px">Course Slop</label>
-                                                        <input class="form-control" v-on:change="GolferUpdated()" type="number" step="any" name="courseSlop" v-model="CourseSlop" />
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group" style="margin-top:70px;">
+                                                                <label style="font-size:18px">Course Slop</label>
+                                                                <input class="form-control" disabled type="number" step="any" name="courseSlop" v-model="CourseSlop" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group" style="margin-top:70px;">
+                                                                <label style="font-size:18px">T Name</label>
+                                                                <input class="form-control" disabled type="text" name="courseSlop" v-model="TName" />
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -429,6 +435,7 @@
                         return {
                             MatchId: 1,
                             CourseSlop: 122,
+                            TName: null,
                             yardages: {
                                 'firstHalf': [
                                     { val: 0, show: false },
@@ -515,13 +522,14 @@
                                     Name: 'Golfer 1',
                                     CourseHandicap: 0,
                                     PlayerIndex: 18.2,
+                                    totalWon: 0,
                                     TeeBoxes: '',
                                     firstHalf: [
                                         { val: 0, show: false, dots: 0, Won: 0 },
                                         { val: 0, show: false, dots: 0, Won: 0 },
                                         { val: 0, show: false, dots: 0, Won: 0 },
                                         { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 8, show: false, dots: 0, Won: 0 },
+                                        { val: 0, show: false, dots: 0, Won: 0 },
                                         { val: 0, show: false, dots: 0, Won: 0 },
                                         { val: 0, show: false, dots: 0, Won: 0 },
                                         { val: 0, show: false, dots: 0, Won: 0 },
@@ -544,6 +552,7 @@
                                     Name: 'Golfer 2',
                                     CourseHandicap: 0,
                                     PlayerIndex: 16,
+                                    totalWon: 0,
                                     TeeBoxes: '',
                                     firstHalf: [
                                         { val: 0, show: false, dots: 0, Won: 0 },
@@ -626,6 +635,17 @@
                         }
                     },
                     methods: {
+                        CalculatedUp: function (golfer) {
+                            this.calculateTotalWon(golfer);
+                            var arr = this.golfers.filter(g => g.ID != golfer.ID);
+                            if (arr.length > 0) {
+                                if (golfer.totalWon > arr[0].totalWon) {
+                                    return golfer.totalWon - arr[0].totalWon;
+                                } else {
+                                    return 0;
+                                }
+                            }
+                        },
                         GolferUpdated: function () {
                             this.calculateCourseHandicap();
                             this.calculatePlayerDots();
@@ -684,7 +704,6 @@
                             for (var x = 0; x < this.golfers.length; x++) {
                                 //console.log(this.golfers);
                                 var golfer = this.golfers[x];
-                                console.log(golfer);
                                 golfer.firstHalf.forEach((g) => {
                                     g.dots = 0;
                                 });
@@ -776,7 +795,9 @@
                                                 this.par.secondHalf = this.splitData(parData[0], 2);
                                             }
                                         }
-                                    } 
+                                    }
+
+                                    //console.log(this.decendingIndexes(this.handicap.firstHalf));
                                 }
                             ).catch(
                                 error => {
@@ -790,21 +811,32 @@
                                         if (res.data != null) {
                                             var data = res.data;
                                             this.MatchId = data.ID;
-                                            this.CourseSlop = data.CourseSlop; 
+                                            this.CourseSlop = data.CourseSlop;
+                                            this.TName = data.TName
                                             for (var i = 0; i < data.Golfers.length; i++) {
-                                                var golfer = data.Golfers[i]; 
+                                                var golfer = data.Golfers[i];
+                                                golfer.totalWon = 0;
                                                 golfer.isChanged = false;
                                                 if (golfer.Holes.length > 0) {
                                                     golfer.firstHalf = this.splitData(golfer.Holes[0], 1);
-                                                    golfer.secondHalf = this.splitData(golfer.Holes[0], 2);   
-                                                     
-                                                    for (var x = 0; x < golfer.firstHalf.length; x++) { 
-                                                        golfer.firstHalf[x].Won = 0; 
+                                                    golfer.secondHalf = this.splitData(golfer.Holes[0], 2);
+                                                    //console.log('data received', golfer.firstHalf.length, golfer.secondHalf.length);
+
+                                                    for (var x = 0; x < golfer.firstHalf.length; x++) {
+                                                        golfer.firstHalf[x].Won = 0;
+                                                        golfer.secondHalf[x].dots = 0;
                                                     }
                                                     for (var x = 0; x < golfer.secondHalf.length; x++) {
-                                                        golfer.secondHalf[x].Won = 0;
-                                                    } 
-                                                } else { 
+                                                        golfer.firstHalf[x].Won = 0;
+                                                        golfer.secondHalf[x].dots = 0;
+                                                    }
+                                                    //golfer.firstHalf.forEach((item) => {
+                                                    //    item.Won = 0;
+                                                    //});
+                                                    //golfer.secondHalf.forEach((item) => {
+                                                    //    item.Won = 0;
+                                                    //});
+                                                } else {
                                                     golfer.firstHalf = JSON.parse(JSON.stringify(this.golferDummyData));
                                                     golfer.secondHalf = JSON.parse(JSON.stringify(this.golferDummyData));
                                                 }
@@ -820,7 +852,6 @@
                                     }
                             ).catch(
                                 error => {
-                                    alert(error);
                                     console.log(error);
                                 }
                             )
@@ -919,6 +950,7 @@
                                     totalWon++;
                                 }
                             }
+                            golfer.totalWon = totalWon;
                             return totalWon;
                         },
                         calculateWon: function () {
