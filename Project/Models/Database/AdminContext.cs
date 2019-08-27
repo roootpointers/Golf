@@ -9,7 +9,8 @@ namespace Project.Models.Database
         public DbSet<Golfers> Golfers { get; set; }
         public DbSet<MatchesGolfers> MatchesGolfers { get; set; }
         public DbSet<Holes> Holes { get; set; }
-        
+        public DbSet<Board> Board { get; set; }
+
         public AdminContext() : base("name=AdminContext")  
         {
             this.Configuration.ProxyCreationEnabled = false;

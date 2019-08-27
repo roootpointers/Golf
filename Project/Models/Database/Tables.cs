@@ -33,8 +33,10 @@ namespace Project.Models.Database
         public int ID { get; set; }
         public string Title { get; set; }
         public double CourseSlop { get; set; }
+        public string TName { get; set; }
 
         public virtual ICollection<Golfers> Golfers { get; set; }
+        public ICollection<Holes> Holes { get; set; }
     }
 
     public class MatchesGolfers
@@ -92,6 +94,39 @@ namespace Project.Models.Database
         public Golfers Golfers { get; set; }
 
         public DateTime Updated { get; set; }
-    } 
+    }
+
+    public class Board
+    {
+        public int ID { get; set; }
+
+        public string BoardId { get; set; }
+        public string CourseName { get; set; }
+        public string CourseTName { get; set; }
+        public string CourseSlop { get; set; }
+
+        public int Type { get; set; }
+
+        public int H1 { get; set; }
+        public int H2 { get; set; }
+        public int H3 { get; set; }
+        public int H4 { get; set; }
+        public int H5 { get; set; }
+        public int H6 { get; set; }
+        public int H7 { get; set; }
+        public int H8 { get; set; }
+        public int H9 { get; set; }
+        public int H10 { get; set; }
+        public int H11 { get; set; }
+        public int H12 { get; set; }
+        public int H13 { get; set; }
+        public int H14 { get; set; }
+        public int H15 { get; set; }
+        public int H16 { get; set; }
+        public int H17 { get; set; }
+        public int H18 { get; set; }
+
+        public DateTime Updated { get; set; }
+    }
 
 }

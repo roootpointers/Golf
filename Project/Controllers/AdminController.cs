@@ -22,6 +22,16 @@ namespace Project.Controllers
         {
             AdminContext db = new AdminContext(); 
             return View();
-        } 
+        }
+
+        public ActionResult CreateBoard()
+        {
+            return View();
+        }
+
+        public ActionResult CreateMatch()
+        {
+            return View();
+        }
     }
 }

@@ -26,6 +26,8 @@ namespace Project.Models.DataClasses
             return 1;
         }
 
+        
+
         public static List<Holes> GetMatchDetails(int MatchId)
         {
             List<Holes> holes = new List<Holes>();
