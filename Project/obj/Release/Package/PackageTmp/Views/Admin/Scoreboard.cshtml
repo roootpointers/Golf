@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
 <head>
+    <title></title>
     <script>$(document).ready(function () {
             $("#preloader").hide();
         });</script>
@@ -28,6 +29,10 @@
         .bg-light-green {
             background-color: #1DB100;
             color: white;
+        }
+
+        .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+            padding: 0px;
         }
 
         .score-board-outer {
@@ -379,41 +384,34 @@
                                                     <div class="score-board-box box-width">
                                                         <span class="box-text">{{sumArray(golfer.firstHalf) + sumArray(golfer.secondHalf)}}</span>
                                                     </div>
-                                                    <div class="score-board-box">{{CalculatedUp(golfer)}} UP</div>
+                                                    <div class="score-board-box">{{calculateTotalWon(golfer)}}</div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="container" style="width: 100%;">
                                             <div class="row">
-                                                <div class="col-sm-3" v-for="golfer in golfers">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Course Slop</label>
+                                                        <input class="form-control" v-on:change="GolferUpdated()" type="number" step="any" name="courseSlop" v-model="CourseSlop" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6" v-for="golfer in golfers">
                                                     <h4>{{golfer.Name}}</h4>
                                                     <div class="form-group">
                                                         <label>Player Index</label>
-                                                        <input class="form-control" disabled type="number" step="any" name="playerIndex1" v-model="golfer.PlayerIndex" />
+                                                        <input class="form-control" v-on:change="GolferUpdated()" type="number" step="any" name="playerIndex1" v-model="golfer.PlayerIndex" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Tee Boxes</label>
+                                                        <input class="form-control" type="text" name="teeBoxes1" v-model="golfer.TeeBoxes" />
                                                     </div>
                                                     <div class="">
                                                         <label>Course Handicap for {{golfer.Name}}: </label> {{golfer.CourseHandicap}}
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-3 col-lg-offset-2">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group" style="margin-top:70px;">
-                                                                <label style="font-size:18px">Course Slop</label>
-                                                                <input class="form-control" disabled type="number" step="any" name="courseSlop" v-model="CourseSlop" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group" style="margin-top:70px;">
-                                                                <label style="font-size:18px">T Name</label>
-                                                                <input class="form-control" disabled type="text" name="courseSlop" v-model="TName" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                
                                             </div>
                                         </div>
                                     </div>
@@ -435,7 +433,6 @@
                         return {
                             MatchId: 1,
                             CourseSlop: 122,
-                            TName: null,
                             yardages: {
                                 'firstHalf': [
                                     { val: 0, show: false },
@@ -522,29 +519,28 @@
                                     Name: 'Golfer 1',
                                     CourseHandicap: 0,
                                     PlayerIndex: 18.2,
-                                    totalWon: 0,
                                     TeeBoxes: '',
                                     firstHalf: [
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 }
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 5, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 8, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 }
                                     ],
                                     secondHalf: [
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 }
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 5, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 }
                                     ],
                                     isChnaged: false
                                 },
@@ -552,43 +548,31 @@
                                     Name: 'Golfer 2',
                                     CourseHandicap: 0,
                                     PlayerIndex: 16,
-                                    totalWon: 0,
                                     TeeBoxes: '',
                                     firstHalf: [
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 }
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 }
                                     ],
                                     secondHalf: [
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 },
-                                        { val: 0, show: false, dots: 0, Won: 0 }
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 },
+                                        { val: 0, show: false, dots: 0 }
                                     ],
                                     isChnaged: false
                                 }
-                            ],
-                            golferDummyData: [
-                                { val: 0, show: false, dots: 0, Won: 0 },
-                                { val: 0, show: false, dots: 0, Won: 0 },
-                                { val: 0, show: false, dots: 0, Won: 0 },
-                                { val: 0, show: false, dots: 0, Won: 0 },
-                                { val: 0, show: false, dots: 0, Won: 0 },
-                                { val: 0, show: false, dots: 0, Won: 0 },
-                                { val: 0, show: false, dots: 0, Won: 0 },
-                                { val: 0, show: false, dots: 0, Won: 0 },
-                                { val: 0, show: false, dots: 0, Won: 0 }
                             ],
                             timeout: null
                         };
@@ -615,9 +599,7 @@
                         handicap: {
                             deep: true,
                             handler: function () {
-                                this.calculatePlayerDots(() => {
-                                    this.calculateWon();
-                                });
+                                this.calculatePlayerDots();
                                 setTimeout(() => {
                                     this.handicap.firstHalfSum = this.sumArray(this.handicap.firstHalf);
                                     this.handicap.secondHalfSum = this.handicap.firstHalfSum + this.sumArray(this.handicap.secondHalf);
@@ -635,17 +617,6 @@
                         }
                     },
                     methods: {
-                        CalculatedUp: function (golfer) {
-                            this.calculateTotalWon(golfer);
-                            var arr = this.golfers.filter(g => g.ID != golfer.ID);
-                            if (arr.length > 0) {
-                                if (golfer.totalWon > arr[0].totalWon) {
-                                    return golfer.totalWon - arr[0].totalWon;
-                                } else {
-                                    return 0;
-                                }
-                            }
-                        },
                         GolferUpdated: function () {
                             this.calculateCourseHandicap();
                             this.calculatePlayerDots();
@@ -666,11 +637,9 @@
                         },
                         sumArray: function (arr) {
                             var sum = 0;
-                            if (arr != null) {
-                                for (var i = 0; i < arr.length; i++) {
-                                    if (arr[i].val != "" && arr[i].val != null) {
-                                        sum = sum + parseInt(arr[i].val + "", 10);
-                                    }
+                            for (var i = 0; i < arr.length; i++) {
+                                if (arr[i].val != "" && arr[i].val != null) {
+                                    sum = sum + parseInt(arr[i].val + "", 10);
                                 }
                             }
                             return sum;
@@ -700,7 +669,7 @@
                             }
                             return nul;
                         },
-                        calculatePlayerDots: function (cb = null) {
+                        calculatePlayerDots: function () {
                             for (var x = 0; x < this.golfers.length; x++) {
                                 //console.log(this.golfers);
                                 var golfer = this.golfers[x];
@@ -715,7 +684,7 @@
 
                                 var firstHalfDosts = Math.ceil(golfer.CourseHandicap / 2);
                                 //console.log('fist half dots', firstHalfDosts);
-                                var maxIndexToGo = this.findMaxDotIndex(this.handicap.firstHalf, sortedIndexes, golfer.CourseHandicap);
+                                var maxIndexToGo = this.findMaxDotIndex(this.handicap.firstHalf, sortedIndexes, firstHalfDosts);
                                 //console.log('max index to go: ', maxIndexToGo);
 
                                 var currentIndex = sortedIndexes[0];
@@ -729,17 +698,13 @@
 
                                 sortedIndexes = this.decendingIndexes(this.handicap.secondHalf);
                                 var secondHalfDosts = Math.floor(golfer.CourseHandicap / 2);
-                                var maxIndexToGo = this.findMaxDotIndex(this.handicap.secondHalf, sortedIndexes, golfer.CourseHandicap);
+                                var maxIndexToGo = this.findMaxDotIndex(this.handicap.secondHalf, sortedIndexes, secondHalfDosts);
 
                                 var currentIndex = sortedIndexes[0];
                                 for (var i = 0; i < secondHalfDosts; i++) {
 
                                     currentIndex = i % (maxIndexToGo + 1);
                                     golfer.secondHalf[sortedIndexes[currentIndex]].dots++;
-                                }
-
-                                if (cb != null) {
-                                    cb();
                                 }
 
                                 //console.log('golfer with dots', golfer.secondHalf.map((a) => a.dots));
@@ -775,26 +740,22 @@
                         getMatchDetails: function (matchId) {
                             axios.get(`/api/WebApis/GetMatchDetails?MatchId=${matchId}`).then(
                                 res => {
-                                    if (res.data != null) {
-                                        if (res.data.length > 0) {
-                                            var yardageData = res.data.filter(d => d.Type === 1);
-                                            if (yardageData.length > 0) {
-                                                this.yardages.firstHalf = this.splitData(yardageData[0], 1);
-                                                this.yardages.secondHalf = this.splitData(yardageData[0], 2);
-                                            }
-                                            var handicapData = res.data.filter(d => d.Type === 2);
-                                            if (handicapData.length > 0) {
-                                                this.handicap.firstHalf = this.splitData(handicapData[0], 1);
-                                                this.handicap.secondHalf = this.splitData(handicapData[0], 2);
+                                    var yardageData = res.data.filter(d => d.Type === 1);
+                                    if (yardageData.length > 0) {
+                                        this.yardages.firstHalf = this.splitData(yardageData[0], 1);
+                                        this.yardages.secondHalf = this.splitData(yardageData[0], 2);
+                                    }
+                                    var handicapData = res.data.filter(d => d.Type === 2);
+                                    if (handicapData.length > 0) {
+                                        this.handicap.firstHalf = this.splitData(handicapData[0], 1);
+                                        this.handicap.secondHalf = this.splitData(handicapData[0], 2);
 
-                                                this.calculatePlayerDots();
-                                            }
-                                            var parData = res.data.filter(d => d.Type === 3);
-                                            if (parData.length > 0) {
-                                                this.par.firstHalf = this.splitData(parData[0], 1);
-                                                this.par.secondHalf = this.splitData(parData[0], 2);
-                                            }
-                                        }
+                                        this.calculatePlayerDots();
+                                    }
+                                    var parData = res.data.filter(d => d.Type === 3);
+                                    if (parData.length > 0) {
+                                        this.par.firstHalf = this.splitData(parData[0], 1);
+                                        this.par.secondHalf = this.splitData(parData[0], 2);
                                     }
 
                                     //console.log(this.decendingIndexes(this.handicap.firstHalf));
@@ -812,42 +773,25 @@
                                             var data = res.data;
                                             this.MatchId = data.ID;
                                             this.CourseSlop = data.CourseSlop;
-                                            this.TName = data.TName
+
                                             for (var i = 0; i < data.Golfers.length; i++) {
                                                 var golfer = data.Golfers[i];
-                                                golfer.totalWon = 0;
                                                 golfer.isChanged = false;
                                                 if (golfer.Holes.length > 0) {
                                                     golfer.firstHalf = this.splitData(golfer.Holes[0], 1);
+                                                    golfer.firstHalf.forEach((item) => {
+                                                        item.Won = 0;
+                                                    })
                                                     golfer.secondHalf = this.splitData(golfer.Holes[0], 2);
-                                                    //console.log('data received', golfer.firstHalf.length, golfer.secondHalf.length);
-
-                                                    for (var x = 0; x < golfer.firstHalf.length; x++) {
-                                                        golfer.firstHalf[x].Won = 0;
-                                                        golfer.secondHalf[x].dots = 0;
-                                                    }
-                                                    for (var x = 0; x < golfer.secondHalf.length; x++) {
-                                                        golfer.firstHalf[x].Won = 0;
-                                                        golfer.secondHalf[x].dots = 0;
-                                                    }
-                                                    //golfer.firstHalf.forEach((item) => {
-                                                    //    item.Won = 0;
-                                                    //});
-                                                    //golfer.secondHalf.forEach((item) => {
-                                                    //    item.Won = 0;
-                                                    //});
-                                                } else {
-                                                    golfer.firstHalf = JSON.parse(JSON.stringify(this.golferDummyData));
-                                                    golfer.secondHalf = JSON.parse(JSON.stringify(this.golferDummyData));
+                                                    golfer.secondHalf.forEach((item) => {
+                                                        item.Won = 0;
+                                                    })
                                                 }
                                             }
-                                            this.golfers = data.Golfers;
+                                            this.golfers = res.data.Golfers;
                                             this.calculateCourseHandicap();
-                                            this.calculatePlayerDots(() => {
-                                                setTimeout(() => {
-                                                    this.calculateWon();
-                                                }, 1000);
-                                            });
+                                            this.calculatePlayerDots();
+                                            this.calculateWon();
                                         }
                                     }
                             ).catch(
@@ -950,7 +894,6 @@
                                     totalWon++;
                                 }
                             }
-                            golfer.totalWon = totalWon;
                             return totalWon;
                         },
                         calculateWon: function () {
@@ -959,7 +902,7 @@
                                     this.amIWon(i, 1);
                                     this.amIWon(i, 2);
                                 }
-                            }, 600);
+                            }, 1000);
                         },
                         amIWon: function (index, type) {
                             var smalest = null;
@@ -1004,13 +947,9 @@
                                         } else if (myScore === smalestScore && i !== smalestIndex) {
                                             this.golfers[smalestIndex].firstHalf[index].Won = -1;
                                         }
-                                        for (var z = 0; z < this.golfers.length; z++) {
-                                            if (parseInt(this.golfers[z].firstHalf[index].val, 10) <= 0) {
-                                                for (var z = 0; z < this.golfers.length; z++) {
-                                                    this.golfers[z].firstHalf[index].Won = 0;
-                                                }
-                                            }
-                                        }
+                                        //if (index === 1) {
+                                        //    console.log(myScore, smalestScore, smalestIndex, this.golfers[smalestIndex].firstHalf[index].Won, i);
+                                        //}
                                     }
                                 }
                                 if (type === 2) {
@@ -1027,13 +966,6 @@
                                             this.golfers[smalestIndex].secondHalf[index].Won = 1;
                                         } else if (myScore === smalestScore) {
                                             this.golfers[smalestIndex].secondHalf[index].Won = -1;
-                                        }
-                                        for (var z = 0; z < this.golfers.length; z++) {
-                                            if (parseInt(this.golfers[z].secondHalf[index].val, 10) <= 0) {
-                                                for (var z = 0; z < this.golfers.length; z++) {
-                                                    this.golfers[z].secondHalf[index].Won = 0;
-                                                }
-                                            }
                                         }
                                     }
                                 }
@@ -1071,10 +1003,6 @@
                         this.getMatchDetails(this.MatchId);
                         this.calculateCourseHandicap();
 
-                        setTimeout(() => {
-                            this.calculateWon();
-                        }, 1000);
-
                         this.getCompleteMatch(this.MatchId);
 
                         this.firstHalfSum = this.sumArray(this.yardages.firstHalf);
@@ -1095,8 +1023,7 @@
                     components: {
                         'popper': VuePopper
                     }
-                });
-            </script>
+                })</script>
 
         </div>
     </div>
