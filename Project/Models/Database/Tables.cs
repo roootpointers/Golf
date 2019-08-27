@@ -54,7 +54,9 @@ namespace Project.Models.Database
     public class Golfers
     {
         public int ID { get; set; }
-        public string Name { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
         public double PlayerIndex { get; set; }
         public string TeeBoxes { get; set; }
 

@@ -41,6 +41,14 @@
                     <input type="password" class="form-control input-lg" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" pattern="(.){8,50}" maxlength="50" name="Password" required placeholder="Password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
+                <div class="form-group">
+                    <label>
+                        <input type="radio" name="LoginType" checked value="1" /> Player
+                    </label>
+                    <label>
+                        <input type="radio" name="LoginType" value="2" /> Admin
+                    </label>
+                </div>
                 <div class="form-group has-feedback">
                     <p style="color:red;">@ViewBag.Error</p>
                 </div>

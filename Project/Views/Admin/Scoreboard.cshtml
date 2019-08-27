@@ -93,9 +93,19 @@
             width: 50px;
             max-width: 50px;
         }
-
-        .score-board-box .box-text {
+        .score-board-box span span.box-text {
             cursor: pointer;
+        }
+        .score-board-box .box-text {
+            min-height: 25px;
+            min-width: 45px;
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
         }
 
         .score-board-box.score-box {
@@ -111,11 +121,16 @@
             align-items: flex-end;
             justify-content: flex-end;
         }
-
-            .golf-score-outer .golf-holes {
-                align-self: center;
-                font-size: 18px;
-            }
+        .golf-score-outer span span.golf-holes {
+            cursor: pointer;
+        }
+        .golf-score-outer .golf-holes {
+            align-self: center;
+            font-size: 18px;
+            min-height: 20px;
+            display: inline-block;
+            min-width: 45px;
+        }
 
         .golf-advantage-dot {
             position: relative;
@@ -221,35 +236,37 @@
                                                 <div class="score-board-row">
                                                     <div class="score-board-box box-heading bg-light-green">Yardage</div>
                                                     <div class="score-board-box box-width" v-for="(yar, index) in yardages.firstHalf">
-                                                        <popper trigger="click"
+                                                        @*<popper trigger="click"
                                                                 :options="{
                                                                   placement: 'top',
                                                                   modifiers: { offset: { offset: '0,10px' } }
                                                                 }" v-bind:force-show="yar.show">
                                                             <div class="popper">
                                                                 <div class="popper-content">
-                                                                    <input class="popper-input" v-on:change="HoleValueInput(1)" type="number" v-model="yar.val" />
+                                                                    <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(1)" type="number" v-model="yar.val" />
                                                                 </div>
                                                             </div>
-                                                            <span class="box-text" slot="reference">{{yar.val}}</span>
-                                                        </popper>
+
+                                                        </popper>*@
+                                                        <span class="box-text">{{yar.val}}</span>
                                                     </div>
                                                     <div class="score-board-box box-width">
                                                         <span class="box-text">{{firstHalfSum}}</span>
                                                     </div>
                                                     <div class="score-board-box box-width" v-for="(yar, index) in yardages.secondHalf">
-                                                        <popper trigger="click"
-                                                                :options="{
-                                                                  placement: 'top',
-                                                                  modifiers: { offset: { offset: '0,10px' } }
-                                                                }">
-                                                            <div class="popper">
-                                                                <div class="popper-content">
-                                                                    <input class="popper-input" v-on:change="HoleValueInput(1)" type="number" v-model="yar.val" />
-                                                                </div>
-                                                            </div>
-                                                            <span class="box-text" slot="reference">{{yar.val}}</span>
-                                                        </popper>
+                                                        @*<popper trigger="click"
+                :options="{
+                  placement: 'top',
+                  modifiers: { offset: { offset: '0,10px' } }
+                }">
+            <div class="popper">
+                <div class="popper-content">
+                    <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(1)" type="number" v-model="yar.val" />
+                </div>
+            </div>
+
+        </popper>*@
+                                                        <span class="box-text" slot="reference">{{yar.val}}</span>
                                                     </div>
                                                     <div class="score-board-box box-width">
                                                         <span class="box-text">{{secondHalfSum}}</span>
@@ -262,35 +279,37 @@
                                                 <div class="score-board-row">
                                                     <div class="score-board-box box-heading bg-light-green">Handicap</div>
                                                     <div class="score-board-box box-width bg-green" v-for="(yar, index) in handicap.firstHalf">
-                                                        <popper trigger="click"
+                                                        @*<popper trigger="click"
                                                                 :options="{
                                                                   placement: 'top',
                                                                   modifiers: { offset: { offset: '0,10px' } }
                                                                 }">
                                                             <div class="popper">
                                                                 <div class="popper-content">
-                                                                    <input class="popper-input" v-on:change="HoleValueInput(2)" type="number" v-model="yar.val" />
+                                                                    <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(2)" type="number" v-model="yar.val" />
                                                                 </div>
                                                             </div>
-                                                            <span class="box-text" slot="reference">{{yar.val}}</span>
-                                                        </popper>
+
+                                                        </popper>*@
+                                                        <span class="box-text" slot="reference">{{yar.val}}</span>
                                                     </div>
                                                     <div class="score-board-box box-width bg-green">
                                                         <span class="box-text"></span>
                                                     </div>
                                                     <div class="score-board-box box-width bg-green" v-for="(yar, index) in handicap.secondHalf">
-                                                        <popper trigger="click"
-                                                                :options="{
-                                                                  placement: 'top',
-                                                                  modifiers: { offset: { offset: '0,10px' } }
-                                                                }">
-                                                            <div class="popper">
-                                                                <div class="popper-content">
-                                                                    <input class="popper-input" v-on:change="HoleValueInput(2)" type="number" v-model="yar.val" />
-                                                                </div>
-                                                            </div>
-                                                            <span class="box-text" slot="reference">{{yar.val}}</span>
-                                                        </popper>
+                                                        @*<popper trigger="click"
+                :options="{
+                  placement: 'top',
+                  modifiers: { offset: { offset: '0,10px' } }
+                }">
+            <div class="popper">
+                <div class="popper-content">
+                    <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(2)" type="number" v-model="yar.val" />
+                </div>
+            </div>
+
+        </popper>*@
+                                                        <span class="box-text" slot="reference">{{yar.val}}</span>
                                                     </div>
                                                     <div class="score-board-box box-width bg-green">
                                                         <span class="box-text"></span>
@@ -303,35 +322,37 @@
                                                 <div class="score-board-row">
                                                     <div class="score-board-box box-heading bg-light-green">Par</div>
                                                     <div class="score-board-box box-width" v-for="(yar, index) in par.firstHalf">
-                                                        <popper trigger="click"
-                                                                :options="{
-                                                                  placement: 'top',
-                                                                  modifiers: { offset: { offset: '0,10px' } }
-                                                                }">
-                                                            <div class="popper">
-                                                                <div class="popper-content">
-                                                                    <input class="popper-input" v-on:change="HoleValueInput(3)" type="number" v-model="yar.val" />
-                                                                </div>
-                                                            </div>
-                                                            <span class="box-text" slot="reference">{{yar.val}}</span>
-                                                        </popper>
+                                                        @*<popper trigger="click"
+                :options="{
+                  placement: 'top',
+                  modifiers: { offset: { offset: '0,10px' } }
+                }">
+            <div class="popper">
+                <div class="popper-content">
+                    <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(3)" type="number" v-model="yar.val" />
+                </div>
+            </div>
+
+        </popper>*@
+                                                        <span class="box-text" slot="reference">{{yar.val}}</span>
                                                     </div>
                                                     <div class="score-board-box box-width">
                                                         <span class="box-text">{{par.firstHalfSum}}</span>
                                                     </div>
                                                     <div class="score-board-box box-width" v-for="(yar, index) in par.secondHalf">
-                                                        <popper trigger="click"
-                                                                :options="{
-                                                                  placement: 'top',
-                                                                  modifiers: { offset: { offset: '0,10px' } }
-                                                                }">
-                                                            <div class="popper">
-                                                                <div class="popper-content">
-                                                                    <input class="popper-input" v-on:change="HoleValueInput(3)" type="number" v-model="yar.val" />
-                                                                </div>
-                                                            </div>
-                                                            <span class="box-text" slot="reference">{{yar.val}}</span>
-                                                        </popper>
+                                                        @*<popper trigger="click"
+                :options="{
+                  placement: 'top',
+                  modifiers: { offset: { offset: '0,10px' } }
+                }">
+            <div class="popper">
+                <div class="popper-content">
+                    <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(3)" type="number" v-model="yar.val" />
+                </div>
+            </div>
+
+        </popper>*@
+                                                        <span class="box-text" slot="reference">{{yar.val}}</span>
                                                     </div>
                                                     <div class="score-board-box box-width">
                                                         <span class="box-text">{{par.secondHalfSum}}</span>
@@ -342,20 +363,21 @@
                                                         Golfer 1
                                                     /////////////////////////*@
                                                 <div class="score-board-row" v-for="(golfer, index) in golfers">
-                                                    <div class="score-board-box box-heading bg-deepskyblue">{{golfer.Name}}</div>
+                                                    <div class="score-board-box box-heading bg-deepskyblue">{{golfer.FullName}}</div>
                                                     <div class="score-board-box score-box" v-for="(vals, index1) in golfer.firstHalf" v-bind:class="{'bg-green': vals.Won === 1}">
                                                         <div class="golf-score-outer">
                                                             <span class="golf-advantage-dot">
                                                                 <i class="fa fa-circle" v-for="dot in vals.dots"></i>
                                                             </span>
-                                                            <popper trigger="click" :options="{placement: 'top',modifiers: { offset: { offset: '0,10px' } }}">
+                                                            <popper v-if="golfer.ID === loggedInGolfer.ID || isAdmin" trigger="click" :options="{placement: 'top',modifiers: { offset: { offset: '0,10px' } }}">
                                                                 <div class="popper">
                                                                     <div class="popper-content">
-                                                                        <input class="popper-input" v-on:change="GolferScoreChanged(1, index)" type="number" v-model="vals.val" />
+                                                                        <input class="popper-input" step="any" max="99999" min="0" v-on:change="GolferScoreChanged(1, index)" type="number" v-model="vals.val" />
                                                                     </div>
                                                                 </div>
                                                                 <span class="golf-holes" slot="reference">{{vals.val}}</span>
                                                             </popper>
+                                                            <span v-if="golfer.ID != loggedInGolfer.ID && !isAdmin" class="golf-holes" slot="reference">{{vals.val}}</span>
                                                         </div>
                                                     </div>
                                                     <div class="score-board-box box-width">
@@ -366,14 +388,15 @@
                                                             <span class="golf-advantage-dot">
                                                                 <i class="fa fa-circle" v-for="dot in vals.dots"></i>
                                                             </span>
-                                                            <popper trigger="click" :options="{placement: 'top',modifiers: { offset: { offset: '0,10px' } }}">
+                                                            <popper v-if="golfer.ID === loggedInGolfer.ID || isAdmin" trigger="click" :options="{placement: 'top',modifiers: { offset: { offset: '0,10px' } }}">
                                                                 <div class="popper">
                                                                     <div class="popper-content">
-                                                                        <input class="popper-input" v-on:change="GolferScoreChanged(2, index)" type="number" v-model="vals.val" />
+                                                                        <input class="popper-input" step="any" max="99999" min="0" v-on:change="GolferScoreChanged(2, index)" type="number" v-model="vals.val" />
                                                                     </div>
                                                                 </div>
                                                                 <span class="golf-holes" slot="reference">{{vals.val}}</span>
                                                             </popper>
+                                                            <span v-if="golfer.ID != loggedInGolfer.ID && !isAdmin" class="golf-holes" slot="reference">{{vals.val}}</span>
                                                         </div>
                                                     </div>
                                                     <div class="score-board-box box-width">
@@ -386,13 +409,13 @@
                                         <div class="container" style="width: 100%;">
                                             <div class="row">
                                                 <div class="col-sm-3" v-for="golfer in golfers">
-                                                    <h4>{{golfer.Name}}</h4>
+                                                    <h4>{{golfer.FullName}}</h4>
                                                     <div class="form-group">
                                                         <label>Player Index</label>
                                                         <input class="form-control" disabled type="number" step="any" name="playerIndex1" v-model="golfer.PlayerIndex" />
                                                     </div>
                                                     <div class="">
-                                                        <label>Course Handicap for {{golfer.Name}}: </label> {{golfer.CourseHandicap}}
+                                                        <label>Course Handicap for {{golfer.FullName}}: </label> {{golfer.CourseHandicap}}
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 col-lg-offset-2">
@@ -436,6 +459,8 @@
                             MatchId: 1,
                             CourseSlop: 122,
                             TName: null,
+                            isAdmin: false,
+                            loggedInGolfer: {},
                             yardages: {
                                 'firstHalf': [
                                     { val: 0, show: false },
@@ -519,7 +544,7 @@
                             },
                             golfers: [
                                 {
-                                    Name: 'Golfer 1',
+                                    FullName: 'Golfer 1',
                                     CourseHandicap: 0,
                                     PlayerIndex: 18.2,
                                     totalWon: 0,
@@ -549,7 +574,7 @@
                                     isChnaged: false
                                 },
                                 {
-                                    Name: 'Golfer 2',
+                                    FullName: 'Golfer 2',
                                     CourseHandicap: 0,
                                     PlayerIndex: 16,
                                     totalWon: 0,
@@ -1052,6 +1077,17 @@
                             for (var i = 0; i < this.golfers.length; i++) {
                                 this.golfers[i].CourseHandicap = Math.round((this.golfers[i].PlayerIndex * this.CourseSlop) / 115)
                             }
+                        },
+                        GetLoggedInUser: function () {
+                            axios.get('/api/WebApis/GetLoggedInUser').then(
+                                res => {
+                                    console.log(res.data);
+                                    if (res.data != null) {
+                                        this.loggedInGolfer = res.data;
+                                    } else {
+                                        this.isAdmin = true;
+                                    }
+                                });
                         }
                     },
                     computed: {
@@ -1068,6 +1104,7 @@
                         }
                     },
                     mounted: function () {
+                        this.GetLoggedInUser();
                         this.getMatchDetails(this.MatchId);
                         this.calculateCourseHandicap();
 

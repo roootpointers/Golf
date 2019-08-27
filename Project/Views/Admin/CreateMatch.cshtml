@@ -54,7 +54,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="form-group">
                                                                     <label>Golfer Name</label>
-                                                                    <input class="form-control" type="text" name="Golfer1Name"  v-model="Golfer1.Name" />
+                                                                    <input class="form-control" type="text" name="Golfer1Name"  v-model="Golfer1.FullName" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12">
@@ -71,7 +71,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="form-group">
                                                                     <label>Golfer Name</label>
-                                                                    <input class="form-control" type="text" name="Golfer2Name" v-model="Golfer2.Name" />
+                                                                    <input class="form-control" type="text" name="Golfer2Name" v-model="Golfer2.FullName" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12">
@@ -118,7 +118,7 @@
                 CourseTName: null,
                 CourseSlop: 0,
                 Golfer1: {
-                    Name: 'Golfer 1',
+                    FullName: 'Golfer 1',
                     CourseHandicap: 0,
                     PlayerIndex: 0,
                     TeeBoxes: '',
@@ -147,7 +147,7 @@
                     isChnaged: false
                 },
                 Golfer2: {
-                    Name: 'Golfer 2',
+                    FullName: 'Golfer 2',
                     CourseHandicap: 0,
                     PlayerIndex: 0,
                     TeeBoxes: '',
@@ -214,7 +214,7 @@
                     s.val = parseInt(s.val + '', 10);
                 });
                 const golfer1Obj = {
-                    Name: this.Golfer1.Name,
+                    FullName: this.Golfer1.FullName,
                     PlayerIndex: this.Golfer1.PlayerIndex,
                     Holes: [
                         this.createHoleObj(4, golfer1Scores)
@@ -225,7 +225,7 @@
                     s.val = parseInt(s.val + '', 10);
                 });
                 const golfer2Obj = {
-                    Name: this.Golfer2.Name,
+                    FullName: this.Golfer2.FullName,
                     PlayerIndex: this.Golfer2.PlayerIndex,
                     Holes: [
                         this.createHoleObj(4, golfer2Scores)

@@ -24,6 +24,20 @@ namespace Project.Models.DataClasses
             return new List<Golfers>();
         }
 
+        public static Golfers GetGolfer(int id)
+        {
+            AdminContext db = new AdminContext();
+            try
+            {
+                var golfer = db.Golfers.FirstOrDefault(o => o.ID == id);
+                return golfer;
+            }
+            catch (Exception ex)
+            {
+            }
+            return null;
+        }
+
         public static Golfers UpdateGolfer(Golfers golfer)
         {
             AdminContext db = new AdminContext();

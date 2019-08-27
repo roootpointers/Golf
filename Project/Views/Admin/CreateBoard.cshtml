@@ -94,6 +94,11 @@
 
         .score-board-box .box-text {
             cursor: pointer;
+            min-height: 25px;
+            min-width: 45px;
+            display: inline-block;
+            height: 100%;
+            width: 100%;
         }
 
         .score-board-box.score-box {
@@ -256,7 +261,7 @@
                                                                 }" v-bind:force-show="yar.show">
                                                                                     <div class="popper">
                                                                                         <div class="popper-content">
-                                                                                            <input class="popper-input" v-on:change="HoleValueInput(1)" type="number" v-model="yar.val" />
+                                                                                            <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(1)" type="number" v-model="yar.val" />
                                                                                         </div>
                                                                                     </div>
                                                                                     <span class="box-text" slot="reference">{{yar.val}}</span>
@@ -273,7 +278,7 @@
                                                                 }">
                                                                                     <div class="popper">
                                                                                         <div class="popper-content">
-                                                                                            <input class="popper-input" v-on:change="HoleValueInput(1)" type="number" v-model="yar.val" />
+                                                                                            <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(1)" type="number" v-model="yar.val" />
                                                                                         </div>
                                                                                     </div>
                                                                                     <span class="box-text" slot="reference">{{yar.val}}</span>
@@ -297,7 +302,7 @@
                                                                 }">
                                                                                     <div class="popper">
                                                                                         <div class="popper-content">
-                                                                                            <input class="popper-input" v-on:change="HoleValueInput(2)" type="number" v-model="yar.val" />
+                                                                                            <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(2)" type="number" v-model="yar.val" />
                                                                                         </div>
                                                                                     </div>
                                                                                     <span class="box-text" slot="reference">{{yar.val}}</span>
@@ -314,7 +319,7 @@
                                                                 }">
                                                                                     <div class="popper">
                                                                                         <div class="popper-content">
-                                                                                            <input class="popper-input" v-on:change="HoleValueInput(2)" type="number" v-model="yar.val" />
+                                                                                            <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(2)" type="number" v-model="yar.val" />
                                                                                         </div>
                                                                                     </div>
                                                                                     <span class="box-text" slot="reference">{{yar.val}}</span>
@@ -338,7 +343,7 @@
                                                                 }">
                                                                                     <div class="popper">
                                                                                         <div class="popper-content">
-                                                                                            <input class="popper-input" v-on:change="HoleValueInput(3)" type="number" v-model="yar.val" />
+                                                                                            <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(3)" type="number" v-model="yar.val" />
                                                                                         </div>
                                                                                     </div>
                                                                                     <span class="box-text" slot="reference">{{yar.val}}</span>
@@ -355,7 +360,7 @@
                                                                 }">
                                                                                     <div class="popper">
                                                                                         <div class="popper-content">
-                                                                                            <input class="popper-input" v-on:change="HoleValueInput(3)" type="number" v-model="yar.val" />
+                                                                                            <input class="popper-input" step="any" max="99999" min="0" v-on:change="HoleValueInput(3)" type="number" v-model="yar.val" />
                                                                                         </div>
                                                                                     </div>
                                                                                     <span class="box-text" slot="reference">{{yar.val}}</span>
